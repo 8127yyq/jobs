@@ -1,6 +1,6 @@
 <template>
     <div class="select">
-      <span :class="{'classA':isA}">{{jobtitle}}<i class="iconfont icon-lower-triangle"></i></span>
+      <span :class="{'classA':isA}">{{jobtitle}}<i class="iconfont icon-lower-triangle" :class="{'iconA':isA}"></i></span>
       <div class="showul" v-if="isDrop">
         <!-- <ul class="select_ul">
           <li class="select_li">不限</li>
@@ -53,6 +53,12 @@ export default {
 .select
   .classA
     color: #f03d37
+    .iconA
+      display: inline-block
+      -moz-transform:scaleY(-1)
+      -webkit-transform:scaleY(-1)
+      -o-transform:scaleY(-1)
+      transform:scaleY(-1)
   .showul
     width: 100%
     height: 100%

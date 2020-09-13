@@ -3,8 +3,8 @@
     <div id="jobs_input">
       <Header title="58同城"/>
       <div class="jobs_input_wrapper">
-        <input class="input_text" type="text" placeholder="搜索">
-        <i class="iconfont icon-sousuo"></i>
+        <input class="input_text" type="text" placeholder="搜索" v-model="userinput">
+        <i class="icon iconfont icon-sousuo" v-if="isicon"></i>
       </div>
     </div>
     <div class="menu">
@@ -31,7 +31,7 @@
               <h2 class="h2">{{item.title}}</h2>
               <p><span>{{item.city}}</span><span>{{item.type}}</span> </p>
               <p>{{item.com}}</p>
-              <p class="money">{{item.time}}</p>
+              <p class="money">{{item.money}}<span class="time">{{item.time}}</span></p>
             </div>
             <div class="job_task">
               <div class="btn_pre">
@@ -61,7 +61,9 @@ export default {
       isDrop: false,
       isDrop2: false,
       isA: false,
-      isB: false
+      isB: false,
+      isicon: true,
+      userinput: ''
     }
   },
   created() {
@@ -119,6 +121,16 @@ export default {
     Header,
     DropDownList,
     DropDownList2
+  },
+  watch: {
+    userinput(val, oldval) {
+      if(val) {
+        this.isicon = false
+      }
+      else {
+        this.isicon = true
+      }
+    }
   }
 }
 </script>
@@ -128,8 +140,7 @@ export default {
     padding: 0 10px
     .jobs_input_wrapper
       padding: 0 10px
-      border: 1px solid #e6e6e6
-      background-color: #fff
+      background-color: #f7f7f7
       display: flex
       line-height: 20px
       justify-content: center
@@ -137,7 +148,20 @@ export default {
         border: 0
         width: 100%
         text-align: center
-        line-height: 25px
+        line-height: 30px
+        outline: 0;
+        -webkit-appearance: none
+        background-color: transparent
+      input::-webkit-input-placeholder
+        color: #888
+        padding-left: 15px
+      .icon
+        display: inline-block
+        position: absolute
+        z-index: 2
+        padding-right: 35px
+        margin-top: 3px
+        color: #666
   .menu
     width: 100%
     height: 45px
@@ -182,14 +206,14 @@ export default {
             .h2
               font-size: 17px
               line-height: 24px
-              width: 300px
+              width: auto
               overflow: hidden
               white-space: nowrap
               text-overflow: ellipsis
             p
               font-size: 13px
               color: #666
-              line-height: 22px
+              line-height: 20px
               width: 200px
               overflow: hidden
               white-space: nowrap
@@ -198,7 +222,9 @@ export default {
                 margin-right: 15px
             .money
               color: #f03d37
-              font-size: 15px
+              font-size: 17px
+              .time
+                font-size: 13px
           .job_task
             .btn_pre
               width: 47px

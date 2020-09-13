@@ -1,6 +1,6 @@
 <template>
     <div class="select">
-      <span :class="{'classA':isB}">{{jobtitle}}<i class="iconfont icon-lower-triangle"></i></span>
+      <span :class="{'classA':isB}">{{jobtitle}}<i class="iconfont icon-lower-triangle" :class="{'iconA':isB}"></i></span>
       <div class="showul" v-if="isDrop2">
         <ul class="select_ul">
           <li class="select_li" v-for="(item, index) in types" :key="index">{{types[index]}}</li>
@@ -40,6 +40,12 @@ export default {
 .select
   .classA
     color: #f03d37
+    .iconA
+      display: inline-block
+      -moz-transform:scaleY(-1)
+      -webkit-transform:scaleY(-1)
+      -o-transform:scaleY(-1)
+      transform:scaleY(-1)
   .showul
     width: 100%
     height: 100%

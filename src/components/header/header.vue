@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1 class="h1">{{title}}</h1>
+    <h2 class="h2">{{title}}</h2>
   </header>
 </template>
 
@@ -20,9 +20,9 @@ export default {
     width:100%
     height:50px
     position: relative;
-    .h1
+    .h2
       font-size: 18px
       text-align: center
       line-height: 50px
-      font-weight: normal
+      font-weight: bold
 </style>
